@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estado de Morosidad · Paseo del Parque · 25 Mar 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red-900:#450a0a;--red-800:#7f1d1d;--red-700:#991b1b;--red-600:#dc2626;
+  --red-400:#f87171;--red-100:#fee2e2;--red-50:#fff5f5;
+  --amber:#f59e0b;--amber-bg:#fffbeb;--amber-text:#92400e;
+  --green:#16a34a;--green-bg:#f0fdf4;--green-text:#166534;
+  --purple:#7c3aed;--purple-bg:#f5f3ff;--purple-text:#4c1d95;
+  --orange:#ea580c;--orange-bg:#fff7ed;--orange-text:#7c2d12;
+  --blue:#2563eb;--blue-dark:#1e3a5f;
+  --ink:#0d0d0d;--paper:#f5f0e8;--paper2:#ede8dc;--paper3:#e4dece;
+  --muted:#6b6358;--border:#d5cfc4;--border2:#c8c1b4;
+}
+html{font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.6}
+.page{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:0 24px 72px}
+
+/* HEADER */
+.header{background:var(--red-800);margin:0 -24px;padding:52px 52px 44px;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:44px;background:var(--paper);clip-path:polygon(0 100%,100% 100%,100% 35%,80% 0%,60% 70%,40% 0%,20% 70%,0 35%)}
+.hdr-deco{position:absolute;right:44px;top:50%;transform:translateY(-60%);font-family:'Bebas Neue',sans-serif;font-size:220px;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none}
+.hdr-meta{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fca5a5;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.8px;padding:4px 10px;border-radius:2px;text-transform:uppercase}
+.badge.warn{background:rgba(253,186,116,.15);border-color:rgba(253,186,116,.3);color:#fdba74}
+.hdr-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.25)}
+.header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(54px,9vw,88px);color:#fff;line-height:.9;letter-spacing:1px;margin-bottom:4px}
+.header h1 span{color:var(--red-400)}
+.hdr-sub{color:#fca5a5;font-size:13px;font-weight:300;letter-spacing:.4px;margin-top:14px}
+
+/* EMERGENCY STRIP */
+.emergency{background:var(--red-600);margin:0 -24px;padding:14px 52px;display:flex;align-items:center;gap:14px}
+.emg-icon{width:28px;height:28px;background:rgba(0,0,0,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:#fff;font-weight:700}
+.emergency p{color:#fff;font-size:14px;line-height:1.5}
+.emergency strong{font-weight:600}
+
+/* LAYOUT */
+.section{margin-top:40px}
+.section-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.col-span-2{grid-column:1/-1}
+
+@media(max-width:680px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .col-span-2{grid-column:auto}
+  .header,.emergency{padding-left:24px;padding-right:24px}
+  .hdr-deco{display:none}
+}
+
+/* CARD */
+.card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.card-hdr{padding:12px 18px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.card-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted)}
+.card-body{padding:20px 18px}
+
+/* DONUT */
+.donut-wrap{position:relative;width:190px;height:190px;margin:0 auto 18px}
+#donutCanvas{display:block}
+.donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+.donut-center .num{font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--ink);line-height:1}
+.donut-center .lbl{font-size:10px;color:var(--muted);font-weight:300;letter-spacing:.4px}
+
+.pie-legend{display:flex;flex-direction:column;gap:7px;margin-top:2px}
+.pli{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:3px;border:1px solid transparent;transition:background .15s,border-color .15s;cursor:default}
+.pli:hover{background:var(--paper);border-color:var(--border)}
+.swatch{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.plt{flex:1}
+.pln{font-size:12px;font-weight:500;color:var(--ink)}
+.pls{font-size:10px;color:var(--muted);margin-top:1px}
+.plv{text-align:right}
+.plp{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink)}
+.plc{font-size:10px;color:var(--muted)}
+
+/* STAT CARDS */
+.stat{border-radius:4px;padding:15px 16px;position:relative;overflow:hidden;border-left:4px solid transparent}
+.stat.green {background:var(--green-bg); border-color:var(--green)}
+.stat.amber {background:var(--amber-bg); border-color:var(--amber)}
+.stat.red   {background:var(--red-100);  border-color:var(--red-600)}
+.stat.purple{background:var(--purple-bg);border-color:var(--purple)}
+.stat-name{font-size:11px;font-weight:500;letter-spacing:.2px;margin-bottom:4px}
+.stat.green  .stat-name{color:var(--green-text)}
+.stat.amber  .stat-name{color:var(--amber-text)}
+.stat.red    .stat-name{color:var(--red-700)}
+.stat.purple .stat-name{color:var(--purple-text)}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:38px;line-height:1;color:var(--ink)}
+.stat-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px}
+.bar-track{height:3px;background:rgba(0,0,0,.08);border-radius:2px;margin-top:10px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;width:0;transition:width 1.3s cubic-bezier(.22,.68,0,1.2)}
+.stat.green  .bar-fill{background:var(--green)}
+.stat.amber  .bar-fill{background:var(--amber)}
+.stat.red    .bar-fill{background:var(--red-600)}
+.stat.purple .bar-fill{background:var(--purple)}
+
+/* TABLES */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 10px 9px;border-bottom:1px solid var(--border);font-weight:400}
+.tbl th.r{text-align:right}
+.tbl td{padding:9px 10px;color:var(--ink);border-bottom:1px solid #f0ece4;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td.r{text-align:right;font-family:'DM Mono',monospace;font-size:11.5px}
+.tbl td.center{text-align:center}
+.total-row td{background:var(--paper2);font-weight:600}
+.total-row td.r{color:var(--red-600);font-size:13px}
+
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:2px}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+
+/* GRAND TOTAL */
+.grand-total{background:var(--ink);border-radius:4px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:18px}
+.gt-left .gt-lbl{color:rgba(255,255,255,.45);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+.gt-left .gt-sub{color:rgba(255,255,255,.3);font-size:10px;margin-top:3px}
+.gt-val{font-family:'Bebas Neue',sans-serif;font-size:46px;color:#fff;line-height:1;letter-spacing:1px}
+.gt-val span{color:var(--red-400)}
+
+/* RECAUDACION */
+.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:4px}
+@media(max-width:560px){.rec-grid{grid-template-columns:1fr}}
+.rec-card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:18px 16px;text-align:center}
+.rec-card.total-card{background:var(--blue-dark);border-color:transparent}
+.rec-lbl{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.rec-card.total-card .rec-lbl{color:rgba(255,255,255,.45)}
+.rec-amount{font-family:'Bebas Neue',sans-serif;font-size:32px;line-height:1;color:var(--ink);margin-bottom:4px}
+.rec-card.total-card .rec-amount{color:#fff}
+.rec-meta{font-size:11px;color:var(--muted)}
+.rec-card.total-card .rec-meta{color:rgba(255,255,255,.5)}
+.rec-detail{font-size:10px;color:var(--muted);margin-top:6px;font-family:'DM Mono',monospace}
+.rec-card.total-card .rec-detail{color:rgba(255,255,255,.35)}
+
+/* ALERT SECTION */
+.alert-card{border-radius:4px;overflow:hidden;border:1px solid var(--border)}
+.alert-card-hdr{padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.alert-card-hdr .alert-icon-sm{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.alert-card-hdr .al-title{font-size:12px;font-weight:500}
+.alert-card-hdr .al-sub{font-size:11px;color:var(--muted);margin-left:auto;font-family:'DM Mono',monospace}
+.alert-card .tbl td:first-child{font-family:'DM Mono',monospace;font-size:11px;font-weight:500}
+.neg{color:var(--red-600);font-weight:600}
+.low{color:var(--orange)}
+
+/* CTA */
+.cta{margin-top:36px;background:linear-gradient(135deg,#1e3a5f 0%,#0f2640 100%);border-radius:4px;padding:30px 36px;position:relative;overflow:hidden}
+.cta::before{content:'⚠';position:absolute;right:28px;top:50%;transform:translateY(-50%);font-size:130px;opacity:.04;pointer-events:none}
+.cta-title{font-family:'Bebas Neue',sans-serif;font-size:30px;color:#fff;letter-spacing:.5px;margin-bottom:8px}
+.cta-title span{color:#93c5fd}
+.cta-body{color:#bfdbfe;font-size:13px;line-height:1.75;font-weight:300;max-width:560px}
+.cta-body strong{color:#fff;font-weight:500}
+
+/* FOOTER */
+.footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;color:var(--muted)}
+.footer-date{font-family:'DM Mono',monospace;font-size:9px;color:var(--border2);letter-spacing:1px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+.a1{opacity:0;animation:fadeUp .6s ease .05s forwards}
+.a2{opacity:0;animation:fadeUp .6s ease .15s forwards}
+.a3{opacity:0;animation:fadeUp .6s ease .3s forwards}
+.a4{opacity:0;animation:fadeUp .6s ease .45s forwards}
+.a5{opacity:0;animation:fadeUp .6s ease .6s forwards}
+.a6{opacity:0;animation:fadeUp .6s ease .75s forwards}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<header class="header a1">
+  <div class="hdr-deco">74</div>
+  <div class="hdr-meta">
+    <span class="badge">Informe Oficial</span>
+    <span class="hdr-dot"></span>
+    <span class="badge">25 · 03 · 2026</span>
+    <span class="hdr-dot"></span>
+    <span class="badge warn">Contiene alertas de revisión</span>
+  </div>
+  <h1>ESTADO DE<br><span>MOROSIDAD</span></h1>
+  <p class="hdr-sub">Condominio Paseo del Parque &nbsp;·&nbsp; 198 departamentos registrados</p>
+</header>
+
+<!-- EMERGENCY STRIP -->
+<div class="emergency a2">
+  <div class="emg-icon">!</div>
+  <p><strong>74 departamentos</strong> acumulan 2 meses o más de deuda &mdash; el <strong>37.4%</strong> del condominio está en mora. Deuda total del padrón: <strong>S/ 83,138.34</strong></p>
+</div>
+
+<!-- SECTION 1: DISTRIBUCIÓN -->
+<div class="section a3">
+  <div class="section-title">Distribución de morosidad</div>
+  <div class="grid-2">
+
+    <!-- DONUT CHART -->
+    <div class="card">
+      <div class="card-hdr"><span class="card-lbl">Por categoría · 198 deptos.</span></div>
+      <div class="card-body">
+        <div class="donut-wrap">
+          <canvas id="donutCanvas" width="190" height="190"></canvas>
+          <div class="donut-center">
+            <div class="num">74</div>
+            <div class="lbl">en mora</div>
+          </div>
+        </div>
+        <div class="pie-legend" id="pieLegend"></div>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div style="display:flex;flex-direction:column;gap:13px">
+      <div class="stat green">
+        <div class="stat-name">Al día &nbsp;(0 – 1 recibo)</div>
+        <div class="stat-num">124</div>
+        <div class="stat-meta">62.6% del padrón</div>
+        <div class="bar-track"><div class="bar-fill" data-w="62.6"></div></div>
+      </div>
+      <div class="stat amber">
+        <div class="stat-name">Mora moderada &nbsp;(2 meses)</div>
+        <div class="stat-num">59</div>
+        <div class="stat-meta">29.8% del padrón</div>
+        <div class="bar-track"><div class="bar-fill" data-w="29.8"></div></div>
+      </div>
+      <div class="stat red">
+        <div class="stat-name">Mora grave &nbsp;(3 meses)</div>
+        <div class="stat-num">4</div>
+        <div class="stat-meta">2.0% del padrón</div>
+        <div class="bar-track"><div class="bar-fill" data-w="2.0"></div></div>
+      </div>
+      <div class="stat purple">
+        <div class="stat-name">Mora crítica &nbsp;(4 a más meses)</div>
+        <div class="stat-num">11</div>
+        <div class="stat-meta">5.6% del padrón</div>
+        <div class="bar-track"><div class="bar-fill" data-w="5.6"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: TABLA DEUDA -->
+<div class="section a4">
+  <div class="section-title">Deuda acumulada · 2 meses o más</div>
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>Categoría</th><th class="center">Dptos.</th><th class="center">% padrón</th><th class="r">Deuda total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="pill" style="background:var(--amber-bg);color:var(--amber-text)"><span class="dot" style="background:var(--amber)"></span>2 meses</span></td>
+        <td class="center">59</td><td class="center" style="font-family:'DM Mono',monospace;font-size:11px">29.8%</td>
+        <td class="r">S/ 25,137.31</td>
+      </tr>
+      <tr>
+        <td><span class="pill" style="background:var(--red-100);color:var(--red-700)"><span class="dot" style="background:var(--red-600)"></span>3 meses</span></td>
+        <td class="center">4</td><td class="center" style="font-family:'DM Mono',monospace;font-size:11px">2.0%</td>
+        <td class="r">S/ 2,435.55</td>
+      </tr>
+      <tr>
+        <td><span class="pill" style="background:var(--purple-bg);color:var(--purple-text)"><span class="dot" style="background:var(--purple)"></span>4 a más meses</span></td>
+        <td class="center">11</td><td class="center" style="font-family:'DM Mono',monospace;font-size:11px">5.6%</td>
+        <td class="r">S/ 38,657.47</td>
+      </tr>
+      <tr class="total-row">
+        <td><strong>Total en mora</strong></td>
+        <td class="center"><strong>74</strong></td>
+        <td class="center" style="font-family:'DM Mono',monospace;font-size:11px"><strong>37.4%</strong></td>
+        <td class="r"><strong>S/ 66,230.33</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="grand-total">
+    <div class="gt-left">
+      <div class="gt-lbl">Deuda total del padrón</div>
+      <div class="gt-sub">Todos los recibos pendientes · 198 deptos.</div>
+    </div>
+    <div class="gt-val">S/ <span>83,138.34</span></div>
+  </div>
+</div>
+
+<!-- SECTION 3: RECAUDACIÓN CUOTAS -->
+<div class="section a4">
+  <div class="section-title">Recaudación por tipo de cuota · custodia al 25 Mar 2026</div>
+  <div class="rec-grid">
+    <div class="rec-card">
+      <div class="rec-lbl">Primera Cuota</div>
+      <div class="rec-amount">S/ 18,437.50</div>
+      <div class="rec-meta">125 deptos. pagaron</div>
+      <div class="rec-detail">@ S/ 147.50 c/u</div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-lbl">Segunda Cuota</div>
+      <div class="rec-amount">S/ 3,699.30</div>
+      <div class="rec-meta">55 deptos. pagaron</div>
+      <div class="rec-detail">@ S/ 67.26 c/u</div>
+    </div>
+    <div class="rec-card total-card">
+      <div class="rec-lbl">Total en Custodia</div>
+      <div class="rec-amount">S/ 22,136.80</div>
+      <div class="rec-meta">180 pagos registrados</div>
+      <div class="rec-detail">Prim. + Seg. cuota</div>
+    </div>
+  </div>
+
+  <!-- Tabla detalle cuotas -->
+  <div style="margin-top:16px;background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden">
+    <div class="card-hdr"><span class="card-lbl">Detalle comparativo de cuotas</span></div>
+    <div style="padding:0 4px">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>Concepto</th>
+            <th class="center">Precio unitario</th>
+            <th class="center">Deptos. que pagaron</th>
+            <th class="r">Total recaudado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill" style="background:#eff6ff;color:#1e40af"><span class="dot" style="background:#2563eb"></span>Primera Cuota</span></td>
+            <td class="center" style="font-family:'DM Mono',monospace;font-size:11px">S/ 147.50</td>
+            <td class="center">125</td>
+            <td class="r">S/ 18,437.50</td>
+          </tr>
+          <tr>
+            <td><span class="pill" style="background:#f0fdf4;color:#166534"><span class="dot" style="background:#16a34a"></span>Segunda Cuota</span></td>
+            <td class="center" style="font-family:'DM Mono',monospace;font-size:11px">S/ 67.26</td>
+            <td class="center">55</td>
+            <td class="r">S/ 3,699.30</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Total en Custodia</strong></td>
+            <td class="center" style="font-family:'DM Mono',monospace;font-size:11px"><strong>—</strong></td>
+            <td class="center"><strong>—</strong></td>
+            <td class="r"><strong>S/ 22,136.80</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: ALERTAS -->
+<div class="section a5">
+  <div class="section-title">Alertas que requieren revisión del administrador</div>
+
+  <!-- SUBSECTION 4A: Negativos -->
+  <div class="alert-card" style="margin-bottom:16px">
+    <div class="alert-card-hdr" style="background:#fff5f5;border-color:#fecaca">
+      <div class="alert-icon-sm" style="background:var(--red-600)">!</div>
+      <div>
+        <div class="al-title" style="color:var(--red-700)">Montos negativos en Feb-26 y Mar-26</div>
+        <div style="font-size:10px;color:var(--red-600);margin-top:2px">Posible pago de contómetros no considerado en el recibo · Requiere verificación urgente</div>
+      </div>
+      <div class="al-sub" style="color:var(--red-600)">6 casos</div>
+    </div>
+    <div style="padding:0 4px">
+      <table class="tbl">
+        <thead>
+          <tr><th>Unidad</th><th>Propietario</th><th class="center">Mes</th><th class="r">Monto negativo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">A703</td><td style="font-size:11px">CARHUANCHO PACAHUALA PERCY E. / VALDIVIA PEREDO</td><td class="center"><span style="font-family:'DM Mono',monospace;font-size:10px;background:#fee2e2;color:#991b1b;padding:2px 7px;border-radius:2px">feb-26</span></td><td class="r neg">-S/ 0.30</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">A803</td><td style="font-size:11px">MARLON BLAS OLIVERA / VARINIA FELY PAZ MARÍN</td><td class="center"><span style="font-family:'DM Mono',monospace;font-size:10px;background:#fee2e2;color:#991b1b;padding:2px 7px;border-radius:2px">feb-26</span></td><td class="r neg">-S/ 141.37</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B207</td><td style="font-size:11px">HERRERA VALER MERCEDES OLGA</td><td class="center"><span style="font-family:'DM Mono',monospace;font-size:10px;background:#fee2e2;color:#991b1b;padding:2px 7px;border-radius:2px">feb-26</span></td><td class="r neg">-S/ 69.05</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B607</td><td style="font-size:11px">MENDOZA ALLCA KATHERINE INGRID</td><td class="center"><span style="font-family:'DM Mono',monospace;font-size:10px;background:#fee2e2;color:#991b1b;padding:2px 7px;border-radius:2px">feb-26</span></td><td class="r neg">-S/ 147.40</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">C308</td><td style="font-size:11px">HERRERA ESPANTOSO MARIA AGUEDA</td><td class="center"><span style="font-family:'DM Mono',monospace;font-size:10px;background:#fee2e2;color:#991b1b;padding:2px 7px;border-radius:2px">feb-26</span></td><td class="r neg">-S/ 46.65</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">C504</td><td style="font-size:11px">MAMANI CALDERON BETZABE / CHAVEZ HUAMAN FREDY</td><td class="center"><span style="font-family:'DM Mono',monospace;font-size:10px;background:#fee2e2;color:#991b1b;padding:2px 7px;border-radius:2px">mar-26</span></td><td class="r neg">-S/ 66.93</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:#fff5f5;border-top:1px solid #fecaca;padding:10px 14px;font-size:11px;color:var(--red-700);line-height:1.6">
+      <strong>Diagnóstico:</strong> Los montos negativos se generan cuando el sistema descuenta las cuotas de contómetros (Primera y/o Segunda Cuota) de los recibos de mantenimiento, pero el pago de dichas cuotas no fue registrado previamente. Estos departamentos <em>aparentemente sí pagaron</em> sus cuotas de contómetros, pero el sistema no lo ha considerado. El administrador debe cruzar los pagos recibidos con el registro del sistema y corregir los importes.
+    </div>
+  </div>
+
+  <!-- SUBSECTION 4B: Montos bajos feb-26 -->
+  <div class="alert-card" style="margin-bottom:16px">
+    <div class="alert-card-hdr" style="background:var(--orange-bg);border-color:#fed7aa">
+      <div class="alert-icon-sm" style="background:var(--orange)">▲</div>
+      <div>
+        <div class="al-title" style="color:var(--orange-text)">Recibos por debajo de S/ 209 en Febrero 2026</div>
+        <div style="font-size:10px;color:var(--orange);margin-top:2px">Cuota mínima = S/ 206 (mantenimiento) + S/ 3 (áreas comunes) · Probable error en el cálculo del recibo</div>
+      </div>
+      <div class="al-sub" style="color:var(--orange)">6 casos</div>
+    </div>
+    <div style="padding:0 4px">
+      <table class="tbl">
+        <thead>
+          <tr><th>Unidad</th><th>Propietario</th><th class="r">Monto feb-26</th><th class="r">Diferencia vs S/209</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B507</td><td style="font-size:11px">VELASQUEZ CUCHO JORGE LUIS / MILAGROS CARLOS R.</td><td class="r low">S/ 92.99</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-116.01</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B801</td><td style="font-size:11px">RODRIGUEZ PACHECO JONATHAN / ALVAREZ VARGAS JENNY</td><td class="r low">S/ 19.42</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-189.58</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B805</td><td style="font-size:11px">VASQUEZ MACHUCA CATHERINE SOLEDAD</td><td class="r low">S/ 27.88</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-181.12</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">C503</td><td style="font-size:11px">PARIONA VASQUEZ RONALD / TREBEJO YRUPAILLA CINTHIA</td><td class="r low">S/ 97.90</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-111.10</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">C602</td><td style="font-size:11px">SALAZAR AGUILAR MAXIMO ISRAEL</td><td class="r low">S/ 0.07</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-208.93</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">C608</td><td style="font-size:11px">URIOL ULLOA NATALIA MARCELA / RINCON SALAZAR JORGE</td><td class="r low">S/ 53.28</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-155.72</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SUBSECTION 4C: Montos bajos mar-26 -->
+  <div class="alert-card">
+    <div class="alert-card-hdr" style="background:var(--orange-bg);border-color:#fed7aa">
+      <div class="alert-icon-sm" style="background:var(--orange)">▲</div>
+      <div>
+        <div class="al-title" style="color:var(--orange-text)">Recibos por debajo de S/ 209 en Marzo 2026</div>
+        <div style="font-size:10px;color:var(--orange);margin-top:2px">Los montos de ~S/ 147.50 coinciden con el valor de la Primera Cuota · Posible omisión del cargo de mantenimiento</div>
+      </div>
+      <div class="al-sub" style="color:var(--orange)">11 casos</div>
+    </div>
+    <div style="padding:0 4px">
+      <table class="tbl">
+        <thead>
+          <tr><th>Unidad</th><th>Propietario</th><th class="r">Monto mar-26</th><th class="r">Diferencia vs S/209</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">A501</td><td style="font-size:11px">DE LAMA CASTILLO DAVID / TOLEDO ACEVEDO CAROLINA</td><td class="r low">S/ 147.50</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-61.50</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">A507</td><td style="font-size:11px">LLANQUE HUAMANTICA MIRIAM</td><td class="r low">S/ 147.50</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-61.50</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">A809</td><td style="font-size:11px">PAREDES PADILLA JOSE LUIS / RENGIFO HINOSTROZA</td><td class="r low">S/ 147.50</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-61.50</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B106</td><td style="font-size:11px">VALENCIA JULCA PEDRO MIGUEL / ANCULLE ALLASI</td><td class="r low">S/ 145.90</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-63.10</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B205</td><td style="font-size:11px">LA TORRE PADRON MARIANO OSCAR / ALVA EGUSQUIZA</td><td class="r low">S/ 147.50</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-61.50</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B303</td><td style="font-size:11px">SHARDIN FLORES LINDA</td><td class="r low">S/ 139.90</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-69.10</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B403</td><td style="font-size:11px">GUERRERO CASIQUE CYNTIA DEL CARMEN</td><td class="r low">S/ 150.50</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-58.50</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B503</td><td style="font-size:11px">MICKE FRANCIS LÓPEZ PAREDES</td><td class="r low">S/ 147.50</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-61.50</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B504</td><td style="font-size:11px">GONZALES PALOMINO CRISTEL / ZAMBRANO ARCE</td><td class="r low">S/ 148.15</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-60.85</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">B808</td><td style="font-size:11px">HOYOS GUTIERREZ SANDRA PAOLA</td><td class="r low">S/ 147.50</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-61.50</td></tr>
+          <tr><td style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500">C705</td><td style="font-size:11px">MARJORIE CABRERA</td><td class="r low">S/ 146.28</td><td class="r" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">-62.72</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:var(--orange-bg);border-top:1px solid #fed7aa;padding:10px 14px;font-size:11px;color:var(--orange-text);line-height:1.6">
+      <strong>Diagnóstico:</strong> Los 11 departamentos de marzo registran montos que coinciden exactamente (o casi) con S/ 147.50, valor de la Primera Cuota de contómetros. Esto sugiere que el recibo de marzo solo cargó la cuota de contómetros y <em>omitió el cargo de mantenimiento + áreas comunes</em> (S/ 209 mínimo). El administrador debe revisar los recibos emitidos en marzo para estos departamentos y corregir el cálculo antes de considerarlos en mora.
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta a6">
+  <div class="cta-title">Si estás al día, <span>eres parte de la solución.</span></div>
+  <p class="cta-body">
+    Exhorta a tus vecinos morosos a ponerse al día. <strong>Cada recibo sin pagar es un servicio que todos perdemos.</strong>
+    La nueva gestión ya identificó 23 casos con posibles errores en el cálculo de recibos &mdash; los estamos corrigiendo.
+    Pero los <strong>74 departamentos en mora real</strong> deben ponerse al día <em>de inmediato</em>.
+    Esta gestión no viene a administrar el declive, viene a rescatar nuestro hogar.
+  </p>
+</div>
+
+<footer class="footer">
+  <span class="footer-brand">Junta de Propietarios 2026–2027 &nbsp;·&nbsp; Orden, Transparencia y Comunidad</span>
+  <span class="footer-date">25.03.2026</span>
+</footer>
+</div>
+
+<script>
+const COLORS=['#16a34a','#f59e0b','#ef4444','#7c3aed'];
+const LABELS=['Al día (0–1 recibo)','2 meses','3 meses','4 a más meses'];
+const COUNTS=[124,59,4,11];
+const TOTAL=198;
+
+function drawDonut(){
+  const c=document.getElementById('donutCanvas'),ctx=c.getContext('2d');
+  const cx=95,cy=95,r=84,ir=58,gap=0.03;
+  let start=-Math.PI/2;
+  ctx.clearRect(0,0,190,190);
+  COUNTS.forEach((n,i)=>{
+    const sl=(n/TOTAL)*2*Math.PI-gap;
+    ctx.beginPath();
+    ctx.moveTo(cx+r*Math.cos(start+gap/2),cy+r*Math.sin(start+gap/2));
+    ctx.arc(cx,cy,r,start+gap/2,start+sl+gap/2);
+    ctx.arc(cx,cy,ir,start+sl+gap/2,start+gap/2,true);
+    ctx.closePath();
+    ctx.fillStyle=COLORS[i];ctx.fill();
+    start+=(n/TOTAL)*2*Math.PI;
+  });
+}
+drawDonut();
+
+const leg=document.getElementById('pieLegend');
+COUNTS.forEach((n,i)=>{
+  const pct=((n/TOTAL)*100).toFixed(1);
+  const el=document.createElement('div');
+  el.className='pli';
+  el.style.animationDelay=(0.7+i*0.08)+'s';
+  el.innerHTML=`<span class="swatch" style="background:${COLORS[i]}"></span>
+    <div class="plt"><div class="pln">${LABELS[i]}</div></div>
+    <div class="plv"><div class="plp">${pct}%</div><div class="plc">${n} dptos.</div></div>`;
+  leg.appendChild(el);
+});
+
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.querySelectorAll('.bar-fill').forEach(b=>{b.style.width=b.dataset.w+'%'});
+  },700);
+});
+</script>
+</body>
+</html>
